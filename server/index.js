@@ -21,4 +21,16 @@ app.get('/api/:listing', (req, res) => {
   });
 });
 
+app.post('/api/:listing', (req, res) => {
+  console.log('posting');
+});
+
+app.put('/api/:listing', (req, res) => {
+  console.log('putting');
+});
+
+app.delete('/api/:listing', (req, res) => {
+  console.log('deleting');
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

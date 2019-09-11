@@ -50,3 +50,22 @@ npm run seed
 npm run build
 npm run start
 ```
+
+### RESTful CRUD APIs
+
+# Retrieve a Listing:
+```sh
+app.get('/api/images/:id')
+```
+# Update a Listing
+```sh
+app.post('/api/images/:id')
+```
+# Create a Listing
+```sh
+app.put('/api/images/:id')
+```
+# Delete a Listing
+```sh
+app.delete('/api/images/:id')
+```
