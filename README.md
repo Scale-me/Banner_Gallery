@@ -51,21 +51,78 @@ npm run build
 npm run start
 ```
 
-### RESTful CRUD APIs
+## RESTful CRUD APIs
 
-# Retrieve a Listing:
-```sh
-app.get('/api/images/:id')
+### Read an Image:
+**get:** 
 ```
-# Update a Listing
-```sh
-app.post('/api/images/:id')
+'/api/images/:id'
 ```
-# Create a Listing
-```sh
-app.put('/api/images/:id')
+**response data:**
+``` 
+{
+  restaurantid: int,
+  imageid: int,
+  date: string,
+  description: string,
+  usersubmit: int
+}
+  ```
+**status code:** 201
+
+### Update an Image
+**post:** 
 ```
-# Delete a Listing
-```sh
-app.delete('/api/images/:id')
+'/api/images/:id'
 ```
+**request data:**
+``` 
+{
+  restaurantid: int,
+  imageid: int,
+  date: string,
+  description: string,
+  usersubmit: int
+}
+  ```
+**status code:** 201
+
+### Create an Image
+**put:** 
+```
+'/api/images/:id'
+```
+**request data:**
+``` 
+{
+  restaurantid: int,
+  imageid: int,
+  date: string,
+  description: string,
+  usersubmit: int
+}
+  ```
+**status code:** 201
+
+### Delete a Listing
+**put:** 
+```
+'/api/images/:id'
+```
+**request data:**
+``` 
+{
+  restaurantid: int,
+  imageid: int,
+  date: string,
+  description: string,
+  usersubmit: int
+}
+  ```
+**status code:** 201
+
+## Database Schemas
+
+### Cassandra:
+
+### posgreSQL:
