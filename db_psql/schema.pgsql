@@ -1,18 +1,18 @@
-CREATE DATABASE restaurant_images;
+CREATE DATABASE restaurantimages;
 
-\connect restaurant_images;
+\connect restaurantimages;
 
 DROP TABLE IF EXISTS restaurants, images;
 
 CREATE TABLE restaurants (
   id SERIAL PRIMARY KEY,
-  name varchar(20)
+  restaurantname varchar(20)
 );
 
 CREATE TABLE images (
   id SERIAL PRIMARY KEY,
   restaurantid INTEGER,
-  imageurl INTEGER,
+  imageid INTEGER,
   date TEXT,
   description TEXT,
   usersubmit INTEGER
