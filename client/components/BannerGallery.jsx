@@ -46,13 +46,9 @@ class BannerGallery extends React.Component {
 
   componentDidMount() {
     let url = window.location.pathname;
-    let listing = url.slice(1, -1);
+    let id = url.slice(1, -1);
 
-    if (Number(listing.slice(1)) <= 0 || Number(listing.slice(1)) >= 100) {
-      listing = 'L1';
-    }
-
-    axios.get(`http://54.241.154.11:3001/api/${listing}`)
+    axios.get(`http://localhost:3001/api/listing/${id}`)
       .then((res) => {
         this.setState({
           images: res.data
@@ -76,25 +72,27 @@ class BannerGallery extends React.Component {
     let modal = this.state.modal;
 
     for (var i = 0; i < images.length; i++) {
-      if (images[i].id === modal.id) {
+      if (images[i].id === modal.id && images[i].imageid === modal.imageid) {
         if (images[i - 1] !== undefined) {
           this.setState({ modal: images[i - 1] });
         }
       }
     }
+    console.log(modal);
   }
 
   changeRightModal() {
     let images = this.state.images;
     let modal = this.state.modal;
-
+    console.log(images);
     for (var i = 0; i < images.length; i++) {
-      if (images[i].id === modal.id) {
+      if (images[i].id === modal.id && images[i].imageid === modal.imageid) {
         if (images[i + 1] !== undefined) {
           this.setState({ modal: images[i + 1] });
         }
       }
     }
+    console.log(modal);
   }
 
   render() {

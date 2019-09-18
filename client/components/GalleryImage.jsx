@@ -30,11 +30,11 @@ class GalleryImage extends React.Component {
       <div>
         {this.props.imageSize === 'small' ?
           <SmallImage
-            src={this.props.image.url}
+            src={`https://s3-us-west-1.amazonaws.com/scale.me-images/images/food${(this.props.image.imageid).toString().padStart(3, '0')}.jpg`}
             onClick={() => this.handleOpenModal()}
           /> :
           <LargeImage
-            src={this.props.image.url}
+            src={`https://s3-us-west-1.amazonaws.com/scale.me-images/images/food${(this.props.image.imageid).toString().padStart(3, '0')}.jpg`}
             onClick={() => this.handleOpenModal()}
           />
         }

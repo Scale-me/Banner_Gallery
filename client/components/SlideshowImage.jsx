@@ -13,7 +13,7 @@ const SlideshowImage = ({ image, openReportImagePopup }) => {
 
   return (
     <ImageContainer image={image}>
-      <Image src={image.url}></Image>
+      <Image src={`https://s3-us-west-1.amazonaws.com/scale.me-images/images/food${(image.imageid).toString().padStart(3, '0')}.jpg`}></Image>
       <ImageFooter
         image={image}
         openReportImagePopup={openReportImagePopup}

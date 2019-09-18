@@ -2,7 +2,7 @@ const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: './client/components/BannerGallery.jsx',
+  entry: './client/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),

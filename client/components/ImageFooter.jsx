@@ -20,7 +20,7 @@ const ImageFooter = ({ image, openReportImagePopup }) => {
       <ImageDescription
         description={image.description}
         date={image.date}
-        userSubmit={image.user_submit}
+        userSubmit={image.usersubmit}
       />
       <ReportIcon
         xmlns='html://www.w3.org/2000/svg'

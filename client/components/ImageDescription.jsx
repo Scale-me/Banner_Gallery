@@ -27,9 +27,10 @@ const DineInfo = window.styled.div`
 
 const ImageDescription = ({ date, description, userSubmit }) => {
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  let dateObj = new Date(date);
-  let month = monthNames[dateObj.getMonth()];
-  let fullDate = `${month} ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
+  let month = Number(date.slice(6,7));
+  let day = Number(date.slice(9,11));
+  let year = Number(date.slice(1,5));
+  let fullDate = `${monthNames[month]} ${day}, ${year}`;
 
   return (
     <FooterText>
