@@ -47,7 +47,9 @@ class BannerGallery extends React.Component {
   componentDidMount() {
     let url = window.location.pathname;
     let id = url.slice(1, -1);
-
+    if (id < 1 || id > 10000000) {
+      id = 1;
+    }
     axios.get(`http://localhost:3001/api/listing/${id}`)
       .then((res) => {
         this.setState({
