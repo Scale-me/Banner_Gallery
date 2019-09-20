@@ -9,7 +9,7 @@ const app = express();
 const port = 3001;
 
 app.locals.newrelic = newrelic;
-// app.use(morgan('tiny'));
+app.use(morgan('tiny'));
 app.use(compression());
 app.use(express.static('public'));
 app.use('/:id', express.static('public'));
