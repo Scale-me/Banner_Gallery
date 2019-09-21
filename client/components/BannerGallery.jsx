@@ -50,7 +50,7 @@ class BannerGallery extends React.Component {
     if (id < 1 || id > 10000000) {
       id = 1;
     }
-    axios.get(`/3001/api/listing/${id}`)
+    axios.get(`http://13.52.74.61:3001/api/listing/${id}`)
       .then((res) => {
         this.setState({
           images: res.data
