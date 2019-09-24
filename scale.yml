@@ -2,8 +2,8 @@ config:
   target: 'http://localhost:3001'
   phases:
     - duration: 60
-      arrivalRate: 1000
+      arrivalRate: 500
 scenarios:
   - flow:
     - get:
-        url: "/api/listing/{{$randomNumber(1,10000000)}}"
+        url: "/api/listing/{{$randomNumber(1,1000)}}"

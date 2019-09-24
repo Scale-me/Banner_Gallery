@@ -4,12 +4,16 @@ const compression = require('compression')
 // const db = require('../db/index.js');
 const db = require('../db_psql/index.js');
 const morgan = require('morgan');
+const redis = require('redis');
 
 const app = express();
 const port = 3001;
+const REDIS_PORT = process.env.PORT || 6379;
+
+const redisClient = redis.createClient(REDIS_PORT);
 
 app.locals.newrelic = newrelic;
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
 app.use(compression());
 app.use(express.static('public'));
 app.use('/:id', express.static('public'));
@@ -19,9 +23,24 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/api/listing/:id', (req, res) => {
+function cache(req, res, next) {
+  const listingId = req.params.id;
+  redisClient.get(listingId, (err, data) => {
+    if(err) throw err;
+    if(data !== null) {
+      // console.log('getting from redis cache');
+      res.send(data);
+    } else {
+      // console.log('NOT GETTING FROM CACHE');
+      next();
+    }
+  })
+}
+
+app.get('/api/listing/:id', cache, (req, res) => {
   db.getImagesFromListing(req.params.id, (error, images) => {
-    if (error) { return error; }
+    if (error) { return error };
+    redisClient.setex(req.params.id, 3600, JSON.stringify(images.rows));
     res.send(images.rows);
   });
 });

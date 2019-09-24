@@ -1,6 +1,6 @@
 const { Client } = require('pg')
+
 const client = new Client({
-  // host: 'localhost',
   user: 'postgres',
   password: 'sandwhich',
   host: '13.57.25.128',
@@ -12,7 +12,6 @@ client.connect();
 
 const getImagesFromListing = (listingId, cb) => {
   listingId = Number(listingId);
-  // client.query(`SELECT * FROM images INNER JOIN restaurants ON images.restaurantid = restaurants.id AND restaurants.id = ${listingId}`,  (error, results) => {
   client.query(`SELECT * FROM images WHERE images.restaurantid = ${listingId}`, (error, results) => {
     if (error) { console.log(error); }
     cb(null, results);
