@@ -8,9 +8,15 @@ const redis = require('redis');
 
 const app = express();
 const port = 3001;
+
 const REDIS_PORT = process.env.PORT || 6379;
 
-const redisClient = redis.createClient(REDIS_PORT);
+const redisOptions = {
+  host: '52.53.189.53',
+  port: 6379
+}
+
+const redisClient = redis.createClient(redisOptions);
 
 app.locals.newrelic = newrelic;
 // app.use(morgan('tiny'));
